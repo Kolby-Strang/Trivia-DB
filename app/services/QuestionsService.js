@@ -16,6 +16,14 @@ class QuestionsService {
         AppState.activeQuestion = AppState.questions[0] || null
     }
 
+    changeScore(amount) {
+        AppState.points += amount
+    }
+
+    resetScore() {
+        AppState.points = 0
+    }
+
 }
 
 export const questionsService = new QuestionsService()

@@ -6,6 +6,8 @@ import { setHTML } from "../utils/Writer.js";
 
 function _drawActiveQuestion() {
     if (AppState.activeQuestion == null) {
+        Pop.toast('Score: ' + AppState.points)
+        questionsService.resetScore()
         bootstrap.Modal.getOrCreateInstance(document.getElementById("requestFormModal")).show()
     } else {
         setHTML('question-container', AppState.activeQuestion.cardTemplate)
@@ -41,8 +43,10 @@ export class QuestionsController {
         if (AppState.activeQuestion.correctAnswer == answer) {
             Pop.success()
             questionsService.cycleQuestions()
+            questionsService.changeScore(3)
         } else {
             Pop.error('Incorrect')
+            questionsService.changeScore(-1)
         }
     }
 

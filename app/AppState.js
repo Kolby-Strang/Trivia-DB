@@ -19,6 +19,8 @@ class ObservableAppState extends EventEmitter {
    */
   activeQuestion = null
 
+  points = 0
+
   // NOTE Used to load initial data
   init() {
 
