@@ -15,15 +15,16 @@ export class Question {
     get cardTemplate() {
         if (this.type == 'boolean') {
             return `
-        <div class="col-6">
-          <div class="row">
-            <div class="col-12 card">
+        <div class="col-10">
+          <div class="row justify-content-around">
+            <div class="col-12 card mb-2">
+              <p class="fs-3">Question</p>
               <p>${this.question}</p>
             </div>
-            <div class="col-6 card p-0">
+            <div class="col-5 card p-0 mb-2">
               <button onclick="app.QuestionsController.answerQuestion('True')" class="btn btn-primary">True</button>
             </div>
-            <div class="col-6 card p-0">
+            <div class="col-5 card p-0 mb-2">
               <button onclick="app.QuestionsController.answerQuestion('False')" class="btn btn-primary">False</button>
             </div>
           </div>
@@ -31,9 +32,10 @@ export class Question {
         `
         } else {
             return `
-        <div class="col-6">
-          <div class="row">
-            <div class="col-12 card">
+        <div class="col-10">
+          <div class="row justify-content-around">
+            <div class="col-12 card mb-2">
+              <p class="fs-3">Question</p>
               <p>${this.question}</p>
             </div>
             ${this.randomizeAnswers}
@@ -48,8 +50,8 @@ export class Question {
         this.allAnswers.sort(() => Math.random() - .5)
         this.allAnswers.forEach(answer => {
             content += `
-            <div class="col-6 card p-0">
-              <button onclick="app.QuestionsController.answerQuestion('${answer.split("&#039;").join('')}')" class="btn btn-primary">${answer}</button>
+            <div class="col-5 card p-0 mb-2">
+              <button onclick="app.QuestionsController.answerQuestion('${answer.split("&#039;").join('')}')" class="btn btn-primary h-100">${answer}</button>
             </div>
             `
         })
