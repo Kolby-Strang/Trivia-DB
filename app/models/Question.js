@@ -5,7 +5,7 @@ export class Question {
         this.type = data.type
         this.difficulty = data.difficulty
         this.question = data.question
-        this.correctAnswer = data.correct_answer.split("&#039;").join('')
+        this.correctAnswer = data.correct_answer
         this.incorrectAnswers = data.incorrect_answers
 
         this.allAnswers = Object.assign([], data.incorrect_answers)
@@ -51,7 +51,7 @@ export class Question {
         this.allAnswers.forEach(answer => {
             content += `
             <div class="col-5 card p-0 mb-2">
-              <button onclick="app.QuestionsController.answerQuestion('${answer.split("&#039;").join('')}')" class="btn btn-primary h-100">${answer}</button>
+              <button onclick="app.QuestionsController.answerQuestion(\`${answer}\`)" class="btn btn-primary h-100">${answer}</button>
             </div>
             `
         })

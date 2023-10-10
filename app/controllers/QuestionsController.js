@@ -41,11 +41,11 @@ export class QuestionsController {
 
     answerQuestion(answer) {
         if (AppState.activeQuestion.correctAnswer == answer) {
-            Pop.success()
+            Pop.success('Correct! Score +3')
             questionsService.cycleQuestions()
             questionsService.changeScore(3)
         } else {
-            Pop.error('Incorrect')
+            Pop.error('Incorrect Score -1')
             questionsService.changeScore(-1)
         }
     }
